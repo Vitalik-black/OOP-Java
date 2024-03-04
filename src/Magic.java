@@ -1,3 +1,5 @@
+import java.util.List;
+
 public enum Magic {
     freiBall(10, 15), heal(2, -2), magDef(5, 2);
 
@@ -10,7 +12,7 @@ public enum Magic {
         atc = i1;
     }
 
-    public int getMana() {
+    public int getMana(List<Unit> targets) {
         return mana;
     }
 

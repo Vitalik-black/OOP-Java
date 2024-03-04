@@ -15,9 +15,9 @@ public class Wizard extends Unit {
         this.walkingRange = 3;
         position = new Position(x, y);
 
-        @Override
+   /*     @Override
         public void step () {
 
-        }
+        }*/
     }
 }

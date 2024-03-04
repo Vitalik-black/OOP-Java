@@ -1,24 +1,16 @@
-//Разбойник
+
 public class Bandit extends Unit {
+//Разбойник
+
     int dexterity;
 
+    public Bandit(String name, int x, int y, int team) {
+        super(name, 90, 90, team, 15, 1,1, "weapon", 3, x, y);
+        this.dexterity = 0;
+    }
 
-    public Bandit(String name, int x, int y) {
-        super(name, x, y);
-        this.health = 90;
-        this.maxHealth = 90;
-        this.team = team;
-        this.attackRange = 1;
-        this.attack = 15;
-        this.level = 1;
-        this.weapon = weapon;
-        this.walkingRange = 3;
-        position = new Position(x, y);
-
-        @Override
-        public void step () {
-
-        }
+    @Override
+    public void step() {
 
     }
 }

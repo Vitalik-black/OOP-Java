@@ -31,15 +31,30 @@ public abstract class Unit implements Step {
         if (targets == null || targets.isEmpty()) {
             throw new IllegalArgumentException("Противников нет!");
         }
+
         Unit nearestTarget = null;
-        double minDistanse = Double.MAX_VALUE;
+        double minDistance = Double.MAX_VALUE;
+
         for (Unit target : targets) {
+            if (!target.isAlive()) {
+                continue; // Пропуск цели, если мертва
+            }
+
             double distance = this.position.getDistance(target.position);
-            if (distance < minDistanse) {
-                minDistanse = distance;
+
+            if (distance < minDistance && distance <= this.attackRange) {
+                minDistance = distance;
                 nearestTarget = target;
             }
         }
+
         return nearestTarget;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
+    public void setTeam(int team) {
+        this.team = team;
     }
 }

@@ -1,3 +1,3 @@
 public interface Step {
-    public void step ();
+    void step();
 }

@@ -16,10 +16,15 @@ public class Peasant extends Unit {
         this.walkingRange = 3;
         position = new Position(x, y);
 
-        @Override
+  /*      @Override
         public void step () {
 
-        }
+        }*/
+
+    }
+
+    @Override
+    public void step() {
 
     }
 }
