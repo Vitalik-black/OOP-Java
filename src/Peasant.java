@@ -1,9 +1,26 @@
 //Крестьянин
 public class Peasant extends Unit {
-int endurance;
+    int endurance;
 
-    public Peasant(String name, int health, int team, int walkingRange, String weapon, int endurance) {
-        super(name, health, team, walkingRange, weapon);
-        this.endurance = endurance;
+    public Peasant(String name, int x, int y) {
+
+        super(name, x, y);
+        this.mana = mana;
+        this.health = 50;
+        this.maxHealth = 50;
+        this.team = team;
+        this.attackRange = 1;
+        this.attack = 4;
+        this.level = 1;
+        this.weapon = weapon;
+        this.walkingRange = 3;
+        position = new Position(x, y);
+
+        @Override
+        public void step () {
+
+        }
+
     }
 }
+

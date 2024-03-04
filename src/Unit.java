@@ -1,17 +1,17 @@
 import java.util.List;
 
-public abstract class Unit {
+public abstract class Unit implements Step {
 
     String name;
-    private int health;
-    private int maxHealth;
-    private int team;
-   private int attackRange;
-   private int attack;
-    private int level;
-    private String weapon;
+    protected int health;
+    protected int maxHealth;
+    protected int team;
+    protected int attackRange;
+    protected int attack;
+    protected int level;
+    protected String weapon;
     Position position;
-    private int walkingRange;
+    protected int walkingRange;
 
     public Unit(String name, int health, int maxHealth, int team, int attackRange, int attack, int level, String weapon, int walkingRange, int x, int y) {
 
@@ -41,4 +41,5 @@ public abstract class Unit {
             }
         }
         return nearestTarget;
-    }}
+    }
+}
