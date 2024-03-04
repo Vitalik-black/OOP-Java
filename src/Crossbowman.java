@@ -7,7 +7,7 @@ public class Crossbowman extends Unit implements Step {
     private int arrows;
 
     public Crossbowman(String name, int x, int y, int team) {
-        super(name, 100, 100, team, 7, 10, 1, "оружие", 3, x, y, 3);
+        super(name, 100, 100, team, 3, 10, 1, "оружие", 3, x, y, 3);
         this.accuracy = 7;
         this.arrows = 7;
     }
@@ -21,7 +21,7 @@ public class Crossbowman extends Unit implements Step {
     public void step(List<Unit> targets) {
         if (isAlive() && arrows > 0) {
             Unit nearestTarget = findNearestTarget(targets);
-            if (nearestTarget != null) {
+            if (nearestTarget != null && !isSameTeam(nearestTarget) && nearestTarget.isAlive()) {
                 System.out.println(name + " выстрелил стрелой в " + nearestTarget.getName());
                 attack(nearestTarget);
                 arrows--;
@@ -30,4 +30,5 @@ public class Crossbowman extends Unit implements Step {
             System.out.println(name + " закончились стрелы!");
         }
     }
+
 }

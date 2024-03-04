@@ -13,12 +13,14 @@ public abstract class Unit implements Step {
     Position position;
     protected int walkingRange;
 
-    public Unit(String name, int health, int maxHealth, int team, int attackRange, int attack, int level, String weapon, int walkingRange, int x, int y) {
+    protected int priority;
 
+    public Unit(String name, int health, int maxHealth, int team,int priority, int attackRange, int attack, int level, String weapon, int walkingRange, int x, int y) {
         this.name = name;
         this.health = health;
         this.maxHealth = maxHealth;
         this.team = team;
+        this.priority = priority;
         this.attackRange = attackRange;
         this.attack = attack;
         this.level = level;
@@ -26,12 +28,10 @@ public abstract class Unit implements Step {
         this.walkingRange = walkingRange;
         position = new Position(x, y);
     }
-
     public Unit findNearestTarget(List<Unit> targets) {
         if (targets == null || targets.isEmpty()) {
             throw new IllegalArgumentException("Противников нет!");
         }
-
         Unit nearestTarget = null;
         double minDistance = Double.MAX_VALUE;
 
@@ -50,11 +50,34 @@ public abstract class Unit implements Step {
 
         return nearestTarget;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public boolean isAlive() {
         return health > 0;
     }
+    public boolean isSameTeam(Unit target) {
+        return this.team == target.getTeam();
+    }
     public void setTeam(int team) {
         this.team = team;
+    }
+    public void attack(Unit target) {
+        if (target.isAlive()) {
+            target.health -= this.attack;
+            System.out.printf("%s атакует %s и наносит %d урона\n", this.name, target.name, this.attack);
+            if (!target.isAlive()) {
+                System.out.printf("%s убит!\n", target.name);
+            }
+        } else {
+            System.out.printf("%s уже мертв! Нельзя атаковать мертвого юнита.\n", target.name);
+        }
+    }
+
+
+    public int getPriority() {
+
+        return priority;
     }
 }

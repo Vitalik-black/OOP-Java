@@ -4,17 +4,8 @@ public class Peasant extends Unit {
 
     public Peasant(String name, int x, int y) {
 
-        super(name, x, y);
-        this.mana = mana;
-        this.health = 50;
-        this.maxHealth = 50;
-        this.team = team;
-        this.attackRange = 1;
-        this.attack = 4;
-        this.level = 1;
-        this.weapon = weapon;
-        this.walkingRange = 3;
-        position = new Position(x, y);
+        super(name, 50, 50, team, 0, 1, 1, "оружие", 3, x, y, 3);
+
 
   /*      @Override
         public void step () {
