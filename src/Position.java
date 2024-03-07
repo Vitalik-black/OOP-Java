@@ -29,6 +29,11 @@ public class Position {
     public double getDistance(Position target) {
 
         return Math.sqrt(Math.pow(this.x - target.x, 2) + Math.pow(this.y - target.y, 2));
+      }
+    public Position getDifference(Position target) {
+        Position dif = new Position(x - target.x, y - target.y);
+        return dif;
     }
 }
+
 

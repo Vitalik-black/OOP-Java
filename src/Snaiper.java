@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Snaiper extends Unit {
 
     // Снайпер
@@ -7,8 +5,8 @@ public class Snaiper extends Unit {
     private int accuracy;
     private int arrows;
 
-    public Snaiper(String name, int x, int y) {
-        super(name, 100, 100, 0, 10, 25, 11, "лук", 10, x, y);
+    public Snaiper(String name, int x, int y, int team, String дальнийСтрелы) {
+        super(name, 100, 100, team, 10, 25, 11, 1,"лук", 10, x, y);
         this.damage = 25;
         this.accuracy = 90;
         this.arrows = 6;
@@ -24,11 +22,11 @@ public class Snaiper extends Unit {
     }
 
     @Override
-    public void step(List<Unit> targets) {
+    public void step() {
         if (isAlive() && arrows > 0) {
             Unit nearestTarget = findNearestTarget(targets);
-            if (nearestTarget != null) {
-                System.out.println(name + " выстрелил стрелой в " + nearestTarget.getName());
+            if (nearestTarget != null && !isSameTeam(nearestTarget) && nearestTarget.isAlive()) {
+                System.out.printf("%s выстрелил стрелой в %s", name, nearestTarget.getName());
                 attack(nearestTarget);
                 arrows--;
             }
