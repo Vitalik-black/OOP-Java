@@ -16,7 +16,7 @@ public class Bandit extends Unit {
 
         Unit target = super.nearestEnemy(enemy);
         if (position.distance(target.position) < 2) {
-            target.getHit(this.powerHit);
+            target.getDamage(this.damage);
             return;
         }
         Position diff = position.getDifference(target.position);

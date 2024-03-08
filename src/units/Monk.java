@@ -1,7 +1,6 @@
 package units;
 
 import java.util.ArrayList;
-import java.util.*;
 
 public class Monk extends Unit {
     int healing;
@@ -11,7 +10,7 @@ public class Monk extends Unit {
     public Monk(String name, int x, int y) {
         super(name, 150, "null", 0, 4, 10, 50, 40, new Position(x, y));
         healing = 0;
-        mana = 10;
+        mana = 40;
         flag = false;
     }
 
@@ -30,10 +29,10 @@ public class Monk extends Unit {
         }
         if (deadlist.size() > 3) {
             flag = true;
-            System.out.println("Флаг установлен");
+            // System.out.println("Флаг установлен");
         }
         if (flag && mana == 10) {
-            deadlist.sort((o1, o2) -> o2.speed - o1.speed);
+            deadlist.sort((o1, o2) -> o2.priority - o1.priority);
             deadlist.getFirst().health = maxHealth;
             mana = 0;
             System.out.println("Воскресил: " + deadlist.getFirst().name);
@@ -58,6 +57,6 @@ public class Monk extends Unit {
 
     @Override
     public String toString() {
-        return super.toString() + ", Мана : " + mana;
+        return super.toString() + ", ➰ : " + mana;
     }
 }

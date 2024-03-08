@@ -32,7 +32,7 @@ public class View {
                     out = "|" + (AnsiColors.ANSI_RED + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
                 }
-                if (Main.darkTeam.contains(human)) out = "|" + (AnsiColors.ANSI_GREEN + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
+                if (Main.darkTeam.contains(human)) out = "|" + (AnsiColors.ANSI_YELLOW + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                 if (Main.holyTeam.contains(human)) out = "|" + (AnsiColors.ANSI_BLUE + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                 break;
             }
@@ -47,13 +47,13 @@ public class View {
         }
         step++;
         Main.allTeam.forEach((v) -> l[0] = Math.max(l[0], v.toString().length()));
-        System.out.print("_".repeat(l[0]*2));
+        System.out.print("-".repeat(l[0]*3));
         System.out.println("");
         System.out.print(top10 + "    ");
         System.out.print("Blue side");
         //for (int i = 0; i < l[0]-9; i++)
         System.out.print(" ".repeat(l[0]-9));
-        System.out.println(":\tGreen side");
+        System.out.println(":\tYellow side");
         for (int i = 1; i < 11; i++) {
             System.out.print(getChar(1, i));
         }

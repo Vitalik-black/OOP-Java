@@ -1,5 +1,7 @@
-/* Урок 5. От простого к практике
-Добавить в проект классы View и AnsiColors. Доработать проект так, чтобы выводилось состояние в консоль. Если в одной из команд погибли все, приложение закрывается с поздравлением победившей команды.
+/* УУрок 6. ООП Дизайн и Solid
+Реализовать степ крестьянам и магам. Один крестьянин может дать только одну стрелу, одному лучнику за ход. Маг имеет 10 маны и может вылечить одного дружественного бойца за ход.
+Лечение стоит 2 маны, если маны не достаточно пропускаем ход.
+При пропуске хода мана растёт на единичку. Если в команде погибло больше трёх человек маг может возродить одного из них, но возрождение стоит 10 маны.
  */
 import units.*;
 import java.util.*;
@@ -24,7 +26,7 @@ public class Main {
         }
         allTeam.addAll(holyTeam);
         allTeam.addAll(darkTeam);
-        allTeam.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
+        allTeam.sort((o1, o2) -> o2.getPriority() - o1.getPriority());
 
         System.out.println();
         Scanner scanner = new Scanner(System.in);
@@ -42,12 +44,12 @@ public class Main {
                 summ2HP += unit.getHp();
             }
             if (summ1HP == 0){
-                System.out.println("Победила Команда слева");
+                System.out.println("Победила Команда  справа");
                 flag = false;
                 break;
             }
             if (summ2HP == 0){
-                System.out.println("Победила Команда справа");
+                System.out.println("Победила Команда слева");
                 flag = false;
                 break;
             }

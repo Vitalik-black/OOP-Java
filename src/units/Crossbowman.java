@@ -1,10 +1,8 @@
 package units;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-// Арбалетчик. Своё свойство - количество стрел
+// Арбалетчик.
 public class Crossbowman extends Unit {
     int countArrow;
     public Crossbowman(String name, int x, int y) {
@@ -17,17 +15,12 @@ public class Crossbowman extends Unit {
         return super.toString() + ", \u27b6 : " + countArrow;
     }
 
-    /*
-    Доработать классы лучников. Лучник должен, во-первых, проверить жив ли он и есть ли у него стрелы,
-    если нет то завершить метод. Если всё да, то найти ближайшего противника и выстрелить по нему
-    и, соответственно потратить одну стрелу. Реализовать весь функционал лучников в методе step().
-     */
     @Override
     public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
         if ((health<=0) || (countArrow == 0)) return;
         Unit target = super.nearestEnemy(enemy);
         if (target == null) return;
-        target.getHit(this.powerHit);
+        target.getDamage(this.damage);
 
         for (Unit unit : friend) {
             if (unit.getInfo().equals("Фермер") && !((Peasant)unit).flag) {

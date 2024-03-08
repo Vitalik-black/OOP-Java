@@ -1,8 +1,6 @@
 package units;
-
 import java.util.ArrayList;
-
-// Копейщик. Своё свойство - количество копей
+// Копейщик.
 public class Spearman extends Unit {
     int countSpear;
     public Spearman(String name, int x, int y) {
@@ -18,7 +16,7 @@ public class Spearman extends Unit {
         if (health<=0) return;
         Unit target = super.nearestEnemy(enemy);
         if (position.distance(target.position) < 2){
-            target.getHit(this.powerHit);
+            target.getDamage(this.damage);
             return;
         }
         Position diff = position.getDifference(target.position);
