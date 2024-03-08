@@ -1,11 +1,16 @@
-//Копьеносец
+package units;
 
+import java.util.ArrayList;
+
+// Копейщик. Своё свойство - количество копей
 public class Spearman extends Unit {
-    int protection;
+    int countSpear;
+    public Spearman(String name, int x, int y) {
+        super(name, 150, "spear", 30, 6, 15, 50, 40, new Position(x,y));
+        countSpear = 0;
+    }
 
-    public Spearman(String name, int health, int team, int walkingRange, String weapon, int protection) {
-        super(name, health, team, walkingRange, weapon);
-        this.protection = protection;
+
 
 
     @Override
@@ -27,7 +32,6 @@ public class Spearman extends Unit {
     }
 
     public String getInfo(){
-        return "Копьеносец";
+        return "Копейщик";
     };
-}
 }

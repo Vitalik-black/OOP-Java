@@ -1,3 +1,5 @@
+package units;
+
 import java.util.List;
 
 public enum Magic {
@@ -20,8 +22,5 @@ public enum Magic {
         return atc;
     }
 
-    @Override
-    public void step() {
 
-    }
 }
