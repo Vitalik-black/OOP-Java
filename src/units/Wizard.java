@@ -9,18 +9,23 @@ public class Wizard extends Unit {
 
     public Wizard(String name, int x, int y) {
         super(name, 150, "Magic", 30, 2, 10, 50, 40, new Position(x, y));
-        mana = 40;
+        mana = 30;
         magic = "wizardDust";
         flag = false;
     }
 
     @Override
     public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
-        if ((health <= 0) || (mana == 0)) return;
+        if (health <= 0 || mana == 0) return;
+
         Unit target = super.nearestEnemy(enemy);
-        if (target == null) return;
-        target.getDamage(this.damage);
-        mana -= 2;
+
+        if (target != null) {
+            target.getDamage(this.damage);
+            this.mana -= 2;
+        } else {
+            this.mana += 1;
+        }
     }
 
     @Override

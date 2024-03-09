@@ -1,7 +1,6 @@
 package units;
 import java.util.ArrayList;
 import java.util.List;
-
 public abstract class Unit implements Step{
     String name;
     int health;
@@ -14,11 +13,9 @@ public abstract class Unit implements Step{
     int maxHealth;
     int x;
     int y;
-
     String className;
     public Position position;
     ArrayList deadList;
-
     public Unit(String name, int health, String weapon, int damage, int priority, int armor, int atackRange, int hidding, Position position){
         this.className = this.getClass().getSimpleName();
         this.name = name;
@@ -34,7 +31,7 @@ public abstract class Unit implements Step{
     // Метод вывода информации о персонаже
     @Override
     public String toString() {
-        return  name + ", \u2665: " + health + ",  ⚔ : " + damage + ", \uD83D\uDEE1\uFE0F :" + armor;
+        return  name + ", \u2665 : " + health + ", ⚔ : " + damage + ", \uD83D\uDEE1\uFE0F : " + armor;
     }
     // Метод вывода короткой информации о персонаже
     public void printShort() {
@@ -50,14 +47,7 @@ public abstract class Unit implements Step{
     public void Heall(Monk monk, Unit unit1) {
         unit1.health = unit1.health + monk.healing;
     }
-    // Метод получения урона
-    public void Damag(Unit unit1, Unit unit2) {
-        unit1.health = unit1.health - unit2.damage;
-    }
-    // Метод колдовства
-    public void Magical(Wizard mag, Unit unit1) {
-        unit1.health = unit1.health - mag.mana;
-    }
+
     public Unit nearestEnemy(List<Unit> targets) {
         if (targets.isEmpty()) {
             return null; // Handle empty list case
@@ -78,12 +68,11 @@ public abstract class Unit implements Step{
     public int getPriority() {
         return priority;
     }
-
     public int getHp(){
         return health;
-    };
+    }
 
     public String getInfo(){
         return " ";
-    };
+    }
 }

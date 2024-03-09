@@ -8,9 +8,6 @@ public class Spearman extends Unit {
         countSpear = 0;
     }
 
-
-
-
     @Override
     public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
         if (health<=0) return;
@@ -25,8 +22,6 @@ public class Spearman extends Unit {
         } else {
             this.position.y += diff.y < 0? 1: -1;
         }
-
-
     }
 
     public String getInfo(){

@@ -9,7 +9,7 @@ public class View {
     private static final String midl10 = formatDiv("d") + String.join("", Collections.nCopies(9, formatDiv("-e"))) + formatDiv("-f");
     private static final String bottom10 = formatDiv("g") + String.join("", Collections.nCopies(9, formatDiv("-h"))) + formatDiv("-i");
     private static void tabSetter(int cnt, int max){
-        int dif = max - cnt + 2;
+        int dif = max - cnt + 7;
         if (dif>0) System.out.printf("%" + dif + "s", ":\t"); else System.out.print(":\t");
     }
     private static String formatDiv(String str) {
@@ -39,7 +39,9 @@ public class View {
         }
         return out;
     }
-    public static void view() {
+    public static void view()
+
+    {
         if (step == 1 ){
             System.out.print(AnsiColors.ANSI_RED + "First step" + AnsiColors.ANSI_RESET);
         } else {
@@ -48,10 +50,10 @@ public class View {
         step++;
         Main.allTeam.forEach((v) -> l[0] = Math.max(l[0], v.toString().length()));
         System.out.print("-".repeat(l[0]*3));
-        System.out.println("");
-        System.out.print(top10 + "    ");
-        System.out.print("Blue side");
-        //for (int i = 0; i < l[0]-9; i++)
+        System.out.println(" ");
+        System.out.print(top10 + "     ");
+        System.out.print("Blue side     ");
+        for (int i = 0; i < l[0]-9; i++)
         System.out.print(" ".repeat(l[0]-9));
         System.out.println(":\tYellow side");
         for (int i = 1; i < 11; i++) {
@@ -82,4 +84,5 @@ public class View {
         System.out.println(Main.darkTeam.get(9));
         System.out.println(bottom10);
     }
+
 }

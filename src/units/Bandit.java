@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 public class Bandit extends Unit {
     int theft;
-
     public Bandit(String name, int x, int y) {
         super(name, 150, "blade", 30, 6, 15, 50, 80, new Position(x, y));
         theft = 15;
     }
-
     @Override
     public void step(ArrayList<Unit> enemy, ArrayList<Unit> friend) {
         if (health <= 0) return;
@@ -30,10 +28,7 @@ public class Bandit extends Unit {
         }
         this.position = newposition;
     }
-
     public String getInfo() {
         return "Разбойник";
     }
-
-    ;
 }

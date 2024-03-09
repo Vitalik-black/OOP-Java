@@ -1,6 +1,6 @@
 package units;
-
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Monk extends Unit {
     int healing;
@@ -10,7 +10,7 @@ public class Monk extends Unit {
     public Monk(String name, int x, int y) {
         super(name, 150, "null", 0, 4, 10, 50, 40, new Position(x, y));
         healing = 0;
-        mana = 40;
+        mana = 20;
         flag = false;
     }
 
@@ -19,7 +19,7 @@ public class Monk extends Unit {
         if (getHp() <= 0) return;
         ArrayList<Unit> sortlist = new ArrayList<>(friend);
         ArrayList<Unit> deadlist = new ArrayList<>();
-        sortlist.sort((o1, o2) -> o1.getHp() - o2.getHp());
+        sortlist.sort(Comparator.comparingInt(Unit::getHp));
         int countdaed = 0;
         for (Unit unit : sortlist) {
             if (unit.getHp() == 0) {
@@ -32,10 +32,10 @@ public class Monk extends Unit {
             // System.out.println("Флаг установлен");
         }
         if (flag && mana == 10) {
-            deadlist.sort((o1, o2) -> o2.priority - o1.priority);
+            deadlist.sort((o1, o2) -> o2.health - o1.health);
             deadlist.getFirst().health = maxHealth;
             mana = 0;
-            System.out.println("Воскресил: " + deadlist.getFirst().name);
+            System.out.println(name + " Воскресил: "   + deadlist.getFirst().toString());
             flag = false;
             return;
         }
@@ -54,7 +54,6 @@ public class Monk extends Unit {
     public String getInfo() {
         return "Монах";
     }
-
     @Override
     public String toString() {
         return super.toString() + ", ➰ : " + mana;
